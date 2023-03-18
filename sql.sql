@@ -39,3 +39,56 @@ WHERE last_name = 'Ivanov';
 
 SELECT *
 FROM employee;
+
+-- Задание 2
+
+INSERT INTO employee (first_name, last_name, gender, age)
+VALUES ('Ahmed', 'Ozrokov', 'Male', 32);
+
+INSERT INTO employee (first_name, last_name, gender, age)
+VALUES ('Anna', 'Saakyan', 'Female', 22);
+
+INSERT INTO employee (first_name, last_name, gender, age)
+VALUES ('Elizaveta', 'Perova', 'Female', 26);
+
+INSERT INTO employee (first_name, last_name, gender, age)
+VALUES ('Sergey', 'Semenov', 'Male', 47);
+
+INSERT INTO employee (first_name, last_name, gender, age)
+VALUES ('Tatyana', 'Sharipkova', 'Female', 46);
+
+SELECT first_name AS Имя, last_name  AS Фамилия
+FROM employee;
+
+SELECT * FROM employee
+WHERE age < 30 OR age > 50;
+
+SELECT * FROM employee
+WHERE age BETWEEN 30 AND 50;
+
+SELECT * FROM employee
+ORDER BY last_name DESC;
+
+SELECT * FROM employee
+WHERE LENGTH(first_name) > 4;
+
+UPDATE employee
+SET first_name = 'Tatyana'
+WHERE last_name = 'Semenov';
+UPDATE employee
+SET first_name = 'Ivan'
+WHERE last_name = 'Ozrokov';
+
+SELECT first_name AS Имя, SUM(age) AS 'Суммарный возраст'
+FROM employee GROUP BY first_name;
+
+SELECT first_name AS Имя, MIN(age) AS 'Мин. возраст'
+FROM employee GROUP BY first_name;
+
+SELECT first_name AS Имя, MAX(age) AS max_age
+FROM employee GROUP BY first_name
+HAVING COUNT(first_name) > 1
+ORDER BY max_age;
+
+
+
