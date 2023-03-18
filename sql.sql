@@ -90,5 +90,47 @@ FROM employee GROUP BY first_name
 HAVING COUNT(first_name) > 1
 ORDER BY max_age;
 
+-- Задание 3
+
+CREATE TABLE city
+(
+    city_id   BIGSERIAL   NOT NULL PRIMARY KEY,
+    city_name VARCHAR(50) NOT NULL
+);
+
+ALTER TABLE employee
+    ADD COLUMN city_id BIGINT REFERENCES city (city_id);
+
+INSERT INTO CITY (city_name)
+VALUES ('Saint Petersburg'),
+       ('Kaliningrad'),
+       ('Moscow'),
+       ('Svetlogorsk'),
+       ('Zelenograd')
+
+UPDATE employee
+SET city_id = 1
+WHERE last_name = 'Ignatova';
+
+UPDATE employee
+SET city_id = 2
+WHERE last_name = 'Ozrokov';
+
+UPDATE employee
+SET city_id = 3
+WHERE last_name = 'Lebedev';
+
+UPDATE employee
+SET city_id=4
+WHERE last_name = 'Sharipkova';
+
+SELECT e.first_name, e.last_name, c.city_name
+FROM employee e
+INNER JOIN city c ON e.city_id = c.city_id;
+
+SELECT e.first_name, e.last_name, c.city_name
+FROM employee e
+CROSS JOIN city c;
+
 
 
