@@ -132,5 +132,13 @@ SELECT e.first_name, e.last_name, c.city_name
 FROM employee e
 CROSS JOIN city c;
 
+SELECT e.first_name, e.last_name, c.city_name
+FROM employee e
+LEFT JOIN city c ON e.city_id = c.city_id;
+
+SELECT e.first_name, e.last_name, c.city_name
+FROM employee e
+FULL JOIN city c ON e.city_id = c.city_id;
+
 
 
